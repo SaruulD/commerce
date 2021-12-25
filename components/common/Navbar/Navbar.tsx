@@ -4,6 +4,7 @@ import s from './Navbar.module.css'
 import NavbarRoot from './NavbarRoot'
 import { Logo, Container } from '@components/ui'
 import { Searchbar, UserNav } from '@components/common'
+import Button from '@components/ui/Button'
 
 interface Link {
   href: string
@@ -25,9 +26,9 @@ const Navbar: FC<NavbarProps> = ({ links }) => (
             </a>
           </Link>
           <nav className={s.navMenu}>
-            <Link href="/search">
+            {/* <Link href="/search">
               <a className={s.link}>All</a>
-            </Link>
+            </Link> */}
             {links?.map((l) => (
               <Link href={l.href} key={l.href}>
                 <a className={s.link}>{l.label}</a>

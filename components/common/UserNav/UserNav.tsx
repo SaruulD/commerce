@@ -5,7 +5,7 @@ import type { LineItem } from '@commerce/types/cart'
 import useCart from '@framework/cart/use-cart'
 import useCustomer from '@framework/customer/use-customer'
 import { Avatar } from '@components/common'
-import { Heart, Menu } from '@components/icons'
+import { Heart, Bag, Menu } from '@components/icons'
 import { useUI } from '@components/ui/context'
 import Button from '@components/ui/Button'
 import DropdownMenu from './DropdownMenu'
@@ -42,16 +42,30 @@ const UserNav: FC<Props> = ({ className }) => {
             {itemsCount > 0 && <span className={s.bagCount}>{itemsCount}</span>}
           </Button>
         </li>
-        {/* )} */}
-        {/* {process.env.COMMERCE_WISHLIST_ENABLED && ( */}
         <li className={s.item}>
-          <Link href="/wishlist">
-            <a onClick={closeSidebarIfPresent} aria-label="Wishlist">
-              <Heart />
-            </a>
-          </Link>
+          <Button
+            className={s.item}
+            variant="naked"
+            onClick={() => {
+              setSidebarView('CART_VIEW')
+              toggleSidebar()
+            }}
+            aria-label={`Cart items: ${itemsCount}`}
+          >
+            <Bag />
+            {itemsCount > 0 && <span className={s.bagCount}>{itemsCount}</span>}
+          </Button>
         </li>
         {/* )} */}
+        {process.env.COMMERCE_WISHLIST_ENABLED && (
+          <li className={s.item}>
+            <Link href="/wishlist">
+              <a onClick={closeSidebarIfPresent} aria-label="Wishlist">
+                <Heart />
+              </a>
+            </Link>
+          </li>
+        )}
         {/* {process.env.COMMERCE_CUSTOMERAUTH_ENABLED && ( */}
         <li className={s.item}>
           {customer ? (

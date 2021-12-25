@@ -9,7 +9,6 @@ import { Bag, Cross, Check } from '@components/icons'
 import useCart from '@framework/cart/use-cart'
 import usePrice from '@framework/product/use-price'
 import SidebarLayout from '@components/common/SidebarLayout'
-import categories from '../../../categories_example'
 
 const CartSidebarView: FC = () => {
   const { closeSidebar, setSidebarView } = useUI()
@@ -33,13 +32,6 @@ const CartSidebarView: FC = () => {
   const error = null
   const success = null
 
-  const renderCategory = () => {
-    return categories.map((category) => {
-      console.log(category, 'category')
-      return <h6 key={category.id}>{category.name}</h6>
-    })
-  }
-
   return (
     <SidebarLayout
       className={cn({
@@ -48,14 +40,17 @@ const CartSidebarView: FC = () => {
       handleClose={handleClose}
     >
       {isLoading || isEmpty ? (
-        <div className="flex-1 px-4 flex flex-col">
-          {/* <span className="border border-dashed border-primary rounded-full flex items-center justify-center w-16 h-16 p-12 bg-secondary text-secondary">
+        <div className="flex-1 px-4 flex flex-col justify-center items-center">
+          <span className="border border-dashed border-primary rounded-full flex items-center justify-center w-16 h-16 p-12 bg-secondary text-secondary">
             <Bag className="absolute" />
-          </span> */}
-          {/* <h2 className="pt-6 text-2xl font-bold tracking-wide text-center">
-            Your cart is empty!
-          </h2> */}
-          <p className="text-accent-3 px-10 pt-2">{renderCategory()}</p>
+          </span>
+          <h2 className="pt-6 text-2xl font-bold tracking-wide text-center">
+            Таны сагс хоосон байна.
+          </h2>
+          <p className="text-accent-3 px-10 text-center pt-2">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
         </div>
       ) : error ? (
         <div className="flex-1 px-4 flex flex-col justify-center items-center">
