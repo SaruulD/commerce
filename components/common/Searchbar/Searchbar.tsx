@@ -34,9 +34,14 @@ const Searchbar: FC<Props> = ({ className, id = 'search' }) => {
 
   return (
     <div className={cn(s.root, className)}>
-      <label className="hidden" htmlFor={id}>
-        Хайлт
-      </label>
+      <select className={s.category} defaultValue="all">
+        <option value="all">Бүгд</option>
+        <option value="lime">Lime</option>
+        <option selected value="coconut">
+          Coconut
+        </option>
+        <option value="mango">Mango</option>
+      </select>
       <input
         id={id}
         className={s.input}
